@@ -8,6 +8,7 @@
 <body>
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <script>
+    var element_layer = document.getElementById('layer');
     new daum.Postcode({
         oncomplete: function(data) {
             if(data.userSelectedType=="R"){
@@ -16,7 +17,10 @@
                 window.android.setAddress(data.zonecode, data.jibunAddress, data.buildingName);
             }
         }
-    }).open();
+    }).embed(element_layer);
+    element_layer.style.display = 'block';
 </script>
+<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
+</div>
 </body>
 </html>
